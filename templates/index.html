@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <tile></tile>
+        <style>
+            .error{
+                color:blue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Signup</h1>
+        <form  action="/" method='post'>
+            <div>
+                <nav>
+                <label for="user-name">Username</label>
+                <input type="text" name="username" id="user-name" placeholder="enter username" value='{{username}}' required>
+                <p class="error"></p>
+                <label for="pass">Password</label>
+                <input type="password" name="password" id="pass" pattern="[^' ']+" minlength="3" maxlength="20"  placeholder="enter password" value='{{password}}'required>
+                <p class="error"></p>
+                <label for="verify">Verify Password</label>
+                <input name="verify" type="password" id="verify" pattern="[^' ']+" minlength="3" maxlength="20" placeholder="Confirm password" title="plase enter the greater than 3 character and less than 20 with no space "  value='{{verify}}' required>
+                <p class="error"></p>
+                <label for="email">Email</label>
+                <input name="email" value="{{email}}" type="text" placeholder="enter email">
+                <p class="error"></p>
+                </nav>
+                <input type="submit" value="singup">
+            </div>
+        </form>
+    </body>
+
+</html>
