@@ -5,29 +5,43 @@
         <tile></tile>
         <style>
             .error{
+                color:red;
+            }
+            .login{
+                background-color: brown;
+            }
+            nav{
+                background-color:lightgrey;
+            }
+            h1{
+                text-align: center;
                 color:blue;
             }
+            
         </style>
     </head>
     <body>
         <h1>Signup</h1>
-        <form  action="/" method='post'>
-            <div>
+        <form  action="/index" method='post'>
+            <div class='login'>
                 <nav>
                 <label for="user-name">Username</label>
                 <input type="text" name="username" id="user-name" placeholder="enter username" value='{{username}}' required>
+                <p class="error">{{username_error}}</p>
+                <label for="passw">Password</label>
+                <input type="password" name="password" id="passw" pattern="[^' ']+" minlength="3" maxlength="20"  placeholder="enter password" title="plase enter the greater than 3 character and less than 20 with no space " required>
+                <p class="error">{{password_error}}</p>
                 <p class="error"></p>
-                <label for="pass">Password</label>
-                <input type="password" name="password" id="pass" pattern="[^' ']+" minlength="3" maxlength="20"  placeholder="enter password" value='{{password}}'required>
-                <p class="error"></p>
-                <label for="verify">Verify Password</label>
-                <input name="verify" type="password" id="verify" pattern="[^' ']+" minlength="3" maxlength="20" placeholder="Confirm password" title="plase enter the greater than 3 character and less than 20 with no space "  value='{{verify}}' required>
-                <p class="error"></p>
+                <label for="verify-p">Verify Password</label>
+                <input name="verify" type="password" id="verify-p"pattern="[^' ']+" minlength="3" maxlength="20" placeholder="Confirm password" title="plase confirm the password" required>
+                <p class="error">{{verify_error}}</p>
                 <label for="email">Email</label>
-                <input name="email" value="{{email}}" type="text" placeholder="enter email">
-                <p class="error"></p>
+                <input name="email" id="email" value='{{email}}'type="text" placeholder="enter email">
+                <p class="error">{{email_error}}</p> 
                 </nav>
-                <input type="submit" value="singup">
+                <input type="submit" value="submit">
+
+
             </div>
         </form>
     </body>
