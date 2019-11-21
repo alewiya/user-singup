@@ -18,10 +18,10 @@ def signup():
         username_error="That's not a valid username"
         username=''
     else:
-        if password.isspace()==True and int(len(password) < 3) and int(len(password)>20) and int(len(password)<0):
+        if (password.isspace()==True) and int(len(password) < 3) and int(len(password)>20) and int(len(password)<0):
             password_error="That's not a valid password"
             password=''
-    if int(len(verify)) <= 0 or (verify != password):
+    if verify != password:
         verify_error="That's do  not match"
         verify=''
     if int(len(email))>0:
@@ -29,12 +29,13 @@ def signup():
             email_error="That's not a valid email"
             email=''
         else:
-            if int(len(email)<3 or int(len(email)>20)):
+            if int(len(email) <3 or int(len(email)>20)):
                 email_error="That's not a valid email"
                 email=''
     if not username_error and not password_error and not verify_error and not email_error:
-        username=str(username)
-    return render_template('homepage.html',username_error=username_error,password_error=password_error,verify_error=verify_error,email_error=email_error,username=username,password=password,verify=verify,email=email)
+        return render_template('homepage.html',username=username)
+    
+    return render_template('index.html',username_error=username_error,password_error=password_error,verify_error=verify_error,email_error=email_error,username=username,password=password,verify=verify,email=email)
 @app.route('/homepage')
 def greeting():
     username=request.args.get('username')
