@@ -1,4 +1,4 @@
-from flask import Flask, request,render_template, escape
+from flask import Flask,request,render_template,redirect
 app = Flask(__name__)
 app.config['DEBUG'] = True    
 @app.route("/")
@@ -26,17 +26,16 @@ def signup():
         verify=''
     if int(len(email))>0:
         if "@" not in email and '.' not in email and " " not in email:
-            email_error="That's not a valid password"
+            email_error="That's not a valid email"
             email=''
         else:
             if int(len(email)<3 or int(len(email)>20)):
                 email_error="That's not a valid email"
-                emial=''
+                email=''
     if not username_error and not password_error and not verify_error and not email_error:
         username=str(username)
-    else:
-        return render_template('homepage.html',username_error=username_error,password_error=password_error,verify_error=verify_error,email_error=email_error,username=username,password=password,verify=verify,email=email)
-@app.route("/homepage")
+    return render_template('homepage.html',username_error=username_error,password_error=password_error,verify_error=verify_error,email_error=email_error,username=username,password=password,verify=verify,email=email)
+@app.route('/homepage')
 def greeting():
     username=request.args.get('username')
     return render_template('homepage.html',username=username)
