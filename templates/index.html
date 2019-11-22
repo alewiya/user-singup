@@ -12,6 +12,7 @@
             }
             nav{
                 background-color:lightgrey;
+                width:800px;
             }
             h1{
                 text-align: center;
@@ -22,21 +23,21 @@
     </head>
     <body>
         <h1>Signup</h1>
-        <form  action="/index" method='post'>
+        <form action="/index" method="post">
             <div class='login'>
                 <nav>
                     <label for="user-name">Username</label>
-                    <input type="text" name="username" id="user-name" placeholder="enter username" value='{{username}}' required>
+                    <input type="text" name="username" id="user-name" placeholder="enter username" value='{{username}}'>
                     <p class="error">{{username_error}}</p>
                     <label for="passw">Password</label>
-                    <input type="password" name="password" id="passw" pattern="[^' ']+" minlength="3" maxlength="20"  placeholder="enter password" title="please enter the character > 3 character and less than 20 with no space " required>
+                    <input type="password" name="password" id="passw"   placeholder="enter password" title="please enter the character > 3 character and less than 20 with no space " >
                     <p class="error">{{password_error}}</p>
                     <p class="error"></p>
                     <label for="verify-p">Verify Password</label>
-                    <input name="verify" type="password" id="verify-p"pattern="[^' ']+" minlength="3" maxlength="20" placeholder="Confirm password" title="please confirm the password" required>
+                    <input name="verify" type="password" id="verify-p"  placeholder="Confirm password" title="please confirm the password">
                     <p class="error">{{verify_error}}</p>
                     <label for="email">Email</label>
-                    <input name="email" id="email" value='{{email}}'type="text" pattern ="[^@\s]+@[^@\s]+\.[^@\s]+" title="enter the valid email" placeholder="enter email" >
+                    <input name="email" id="email" value='{{email}}'type="text" placeholder="enter email" >
                     <p class="error">{{email_error}}</p> 
                 </nav>
                 <input type="submit" value="submit">
