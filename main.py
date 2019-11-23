@@ -19,7 +19,8 @@ def signup():
     if int(len(username)) <= 0 :
         username_error="That's not a valid username"
         username=''
-    elif int(len(username)) < 3 or int(len(username)) > 20 or " " in username :
+    else:
+        if int(len(username)) < 3 or int(len(username)) > 20 or " " in username :
             username_error = 'Thats not a valid username'
             username = ''  
     if int(len(password)) <= 0:
@@ -32,18 +33,18 @@ def signup():
         verify_error="passowrd do not match"
         verify=''
     if int(len(email)) > 0:
-        if "@" != email and '.' != email and " " != email:
+        if "@" != email and '.' != email and " "  in  email:
             email_error="That's not a valid email"
             email=''
         elif int(len(email)) < 3 or int(len(email)) > 20:
                 email_error="That's not a valid email"
                 email=''
     if not username_error and not password_error and not verify_error and not email_error:
-        return redirect('/homepageusername={0}'.format(username))
+        return redirect('/homepage?username={0}'.format(username))
     else:
         return render_template('index.html',username_error=username_error,password_error=password_error,verify_error=verify_error,email_error=email_error,username=username,password=password,verify=verify,email=email)
 @app.route('/homepage')
 def greeting():
-    username=request.form['username']
+    username=request.args.get('username')
     return render_template('homepage.html',username=username)
 app.run()
